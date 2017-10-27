@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private List<Reclamo> listaReclamos;
     private ReclamoAdapter adapter;
     private Button btnNuevoReclamo;
+    int FOR_RECLAMO=1;
+    private Intent intentForReclamo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,5 +54,13 @@ public class MainActivity extends AppCompatActivity {
         Thread t = new Thread(r);
         t.start();
         btnNuevoReclamo = (Button) findViewById(R.id.btnNuevoReclamo);
+        btnNuevoReclamo.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                intentForReclamo = new Intent(MainActivity.this,FormReclamo.class);
+                startActivityForResult(intentForReclamo,FOR_RECLAMO);
+            }
+        });
     }
 }
